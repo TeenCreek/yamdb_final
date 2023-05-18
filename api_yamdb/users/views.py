@@ -1,24 +1,23 @@
 import uuid
 
-from django.shortcuts import get_object_or_404
 from django.core.mail import send_mail
-
-from rest_framework.viewsets import ModelViewSet
-from rest_framework.response import Response
+from django.shortcuts import get_object_or_404
+from rest_framework import status
 from rest_framework.decorators import action
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.filters import SearchFilter
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.viewsets import ModelViewSet
 from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework import status
 
 from .models import User
+from .permissions import IsAdmin
 from .serializers import (
-    RegistrationSerializer,
     TokenSerializer,
     UserSerializer,
+    RegistrationSerializer,
 )
-from .permissions import IsAdmin
 
 
 class CodeTokenViewSet(ModelViewSet):
@@ -103,7 +102,8 @@ class UserViewSet(ModelViewSet):
         detail=False,
         methods=['get'],
         url_path='me',
-        permission_classes=(IsAuthenticated,))
+        permission_classes=(IsAuthenticated,),
+    )
     def get_self_user_info(self, request):
         """Получение информациеи пользователя о самом себе."""
 
@@ -116,9 +116,7 @@ class UserViewSet(ModelViewSet):
         """Изменение информации пользователя о самом себе"""
 
         user = get_object_or_404(User, username=self.request.user)
-        serializer = self.get_serializer(
-            user, data=request.data, partial=True
-        )
+        serializer = self.get_serializer(user, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         user.save()

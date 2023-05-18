@@ -2,12 +2,10 @@ import re
 
 from django.core.exceptions import ValidationError
 from django.shortcuts import get_object_or_404
-
 from rest_framework import serializers
-from rest_framework.validators import UniqueValidator, UniqueTogetherValidator
+from rest_framework.validators import UniqueTogetherValidator, UniqueValidator
 
 from .models import User
-
 
 ROLE_CHOICES = User.ROLE_CHOICES
 
