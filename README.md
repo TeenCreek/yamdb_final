@@ -75,4 +75,4 @@ GET /api/v1/titles/1/reviews/ - получить отзыв к произвед�
 
 > Подробную документацию по запросам к API можно посмотреть по _[ссылке](http://127.0.0.1/redoc/)_ после запуска сервера с проектом.
 
-![example workflow](https://github.com/TeenCreek/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
+> ![example workflow](https://github.com/TeenCreek/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
