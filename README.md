@@ -77,5 +77,5 @@ GET /api/v1/titles/1/reviews/ - получить отзыв к произвед�
 
 ![example workflow](https://github.com/TeenCreek/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 
-> Имя образа в DockerHub - rakk69/apiyamdb
-> 158.160.23.177 - ip сервера
+- Имя образа в DockerHub - rakk69/apiyamdb
+- Ip сервера - 51.250.110.226
